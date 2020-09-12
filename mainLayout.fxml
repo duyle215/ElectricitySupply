@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="rootPane" maxHeight="1080.0" maxWidth="1920.0" minHeight="1000.0" minWidth="1920.0" prefHeight="1000.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.MainController">
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                  <MenuItem fx:id="loadMenu" mnemonicParsing="false" onAction="#loadMenuClicked" text="Load..." />
+                  <MenuItem mnemonicParsing="false" onAction="#saveMenuClicked" text="Save..." />
+                        <MenuItem mnemonicParsing="false" onAction="#closeMenuClicked" text="Close" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Reset to Default" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#aboutMenuClicked" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+   <left>
+      <VBox prefWidth="300.0" BorderPane.alignment="CENTER">
+         <children>
+              <TableView fx:id="generatorTableView" prefHeight="270.0">
+                  <columns>
+                      <TableColumn fx:id="powerColumn" text="Power" />
+                      <TableColumn fx:id="operatingColumn" minWidth="4.799957275390625" text="Operating" />
+                      <TableColumn fx:id="environmentalColumn" text="Environmental" />
+                  </columns>
+              </TableView>
+            <HBox prefHeight="30.0">
+               <children>
+                  <TextField fx:id="powerInput" promptText="Power / Hour">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <TextField fx:id="operatingInput" promptText="Operating Cost">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <TextField fx:id="environmentalInput" promptText="Environmental Cost">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox prefHeight="40.0" spacing="8.0">
+               <children>
+                  <Button fx:id="addButton" mnemonicParsing="false" onAction="#addButtonClicked" text="Add" />
+                  <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteButtonClicked" text="Delete" />
+                  <Label text="Max Power:" />
+                  <Label fx:id="maxPowerLabel" text="..." />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="BOTTOM_CENTER" prefHeight="100.0">
+               <children>
+                  <Label text="Settings" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <TabPane prefHeight="558.0" prefWidth="250.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Genetic Algorithm">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0">
+                           <children>
+                              <GridPane layoutY="7.0" prefHeight="497.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" prefWidth="0.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="Number of Generations" GridPane.rowIndex="1" />
+                                    <Label prefHeight="21.0" text="Duration of a generation (ms)" wrapText="true" GridPane.rowIndex="5" />
+                                    <Label text="Popuplation Size" GridPane.rowIndex="3" />
+                                    <Slider fx:id="noGenerationsSlider" blockIncrement="500.0" majorTickUnit="2000.0" max="10000.0" min="100.0" minorTickCount="0" showTickLabels="true" value="5000.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                                       <GridPane.margin>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </GridPane.margin></Slider>
+                                    <Slider fx:id="durationSlider" majorTickUnit="400.0" max="2000.0" min="10.0" showTickLabels="true" value="1.0" GridPane.columnSpan="2" GridPane.rowIndex="6">
+                                       <GridPane.margin>
+                                          <Insets bottom="9.0" left="9.0" right="9.0" top="9.0" />
+                                       </GridPane.margin></Slider>
+                                    <Slider fx:id="populationSizeSlider" blockIncrement="100.0" majorTickUnit="5.0" max="50.0" min="5.0" showTickLabels="true" snapToTicks="true" value="50.0" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                                       <GridPane.margin>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </GridPane.margin></Slider>
+                                    <Label text="Demand (kWh)" />
+                                    <TextField fx:id="demandInput" onAction="#demandInputEntered" promptText="demand" GridPane.columnIndex="1" />
+                                    <Label text="Crossover Probability" GridPane.rowIndex="7" />
+                                    <Label text="Mutation Probability" GridPane.rowIndex="9" />
+                                    <Slider fx:id="crossoverProbSlider" blockIncrement="0.001" majorTickUnit="0.1" max="0.5" min="0.1" showTickLabels="true" value="0.5" GridPane.columnSpan="2" GridPane.rowIndex="8">
+                                       <padding>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </padding>
+                                    </Slider>
+                                    <Slider fx:id="mutationProbSlider" blockIncrement="0.01" majorTickUnit="0.05" max="0.2" min="0.05" showTickLabels="true" value="0.1" GridPane.columnSpan="2" GridPane.rowIndex="10">
+                                       <padding>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </padding>
+                                    </Slider>
+                                    <Slider fx:id="operatingCoeffSlider" blockIncrement="1.0" majorTickUnit="1.0" max="5.0" min="1.0" showTickLabels="true" value="1.0" GridPane.columnSpan="2" GridPane.rowIndex="12">
+                                       <GridPane.margin>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </GridPane.margin></Slider>
+                                    <Slider fx:id="environmentalCoeffSlider" blockIncrement="1.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" showTickLabels="true" value="1.0" GridPane.columnSpan="2" GridPane.rowIndex="14">
+                                       <GridPane.margin>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </GridPane.margin></Slider>
+                                    <Label text="Operating Cost Coefficient" GridPane.rowIndex="11" />
+                                    <Label text="Environmental Cost Coefficient" GridPane.rowIndex="13" />
+                                    <Label fx:id="noGenerationsLabel" text="noGenerations" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label fx:id="populationSizeLabel" text="population" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <Label fx:id="durationLabel" text="duration" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                    <Label fx:id="crossoverProbLabel" text="crossoverProb" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                    <Label fx:id="mutationProbLabel" text="mutationProb" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                    <Label fx:id="operatingCoeffLabel" text="operatingCoeff" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                    <Label fx:id="environmentalCoeffLabel" text="environmentalCoeff" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab text="Visualization">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0">
+                           <children>
+                              <GridPane layoutY="7.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="140.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="171.0" minWidth="10.0" prefWidth="40.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="171.0" minWidth="10.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Label text="Dx (x-spacing between generators)" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                                    <Label text="Dy (y-spacing between candidates)" wrapText="true" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                                    <Label text="H (height of a generator)" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+                                    <Slider fx:id="dxSlider" blockIncrement="1000.0" majorTickUnit="1.0" max="5.0" minorTickCount="0" showTickLabels="true" snapToTicks="true" value="3.0" GridPane.columnSpan="3" GridPane.rowIndex="2">
+                                       <GridPane.margin>
+                                          <Insets bottom="9.0" left="9.0" right="9.0" top="9.0" />
+                                       </GridPane.margin>
+                                    </Slider>
+                                    <Slider fx:id="dySlider" blockIncrement="1.0" majorTickUnit="5.0" max="25.0" minorTickCount="0" showTickLabels="true" value="15.0" GridPane.columnSpan="3" GridPane.rowIndex="4">
+                                       <GridPane.margin>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </GridPane.margin>
+                                    </Slider>
+                                    <Slider fx:id="hSlider" blockIncrement="1.0" majorTickUnit="5.0" max="50.0" min="10.0" minorTickCount="0" showTickLabels="true" value="20.0" GridPane.columnSpan="3" GridPane.rowIndex="6">
+                                       <GridPane.margin>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </GridPane.margin>
+                                    </Slider>
+                                    <Slider fx:id="marginSlider" blockIncrement="1000.0" majorTickUnit="3.0" max="20.0" min="2.0" minorTickCount="0" showTickLabels="true" value="4.0" GridPane.columnSpan="3" GridPane.rowIndex="8">
+                                       <GridPane.margin>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </GridPane.margin>
+                                    </Slider>
+                                    <Label text="Margin" GridPane.rowIndex="7" />
+                                    <Label fx:id="dxLabel" text="dx" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                    <Label fx:id="dyLabel" text="dy" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                    <Label fx:id="hLabel" text="h" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                                    <Label fx:id="marginLabel" text="margin" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                                    <Label text="Color of ON generator" wrapText="true" GridPane.rowIndex="9" />
+                                    <Label text="Color of OFF generator" wrapText="true" GridPane.rowIndex="10" />
+                                    <ColorPicker fx:id="onGeneratorColorPicker" onAction="#generatorColorPickerClicked" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="9" />
+                                    <ColorPicker fx:id="offGeneratorColorPicker" onAction="#generatorColorPickerClicked" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="10" />
+                                    <CheckBox fx:id="skipCandidatesCheckBox" mnemonicParsing="false" text="Skip same-fitness candidates" GridPane.columnSpan="2" GridPane.rowIndex="11" />
+                                 </children>
+                                 <padding>
+                                    <Insets top="5.0" />
+                                 </padding>
+                              </GridPane>
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+            <HBox alignment="CENTER" prefHeight="40.0" spacing="20.0">
+               <children>
+                  <ImageView fx:id="controlButton" fitHeight="28.0" fitWidth="29.0" onMousePressed="#controlButtonClicked" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/startButton.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="stopButton" disable="true" fitHeight="28.0" fitWidth="29.0" onMousePressed="#stopButtonClicked" opacity="0.2" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/stopButton.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </left>
+   <bottom>
+      <HBox prefHeight="40.0" spacing="8.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Best Candidate:" textFill="BLUE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <Label fx:id="bestCandidateLabel" text="..." textAlignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+         </children>
+         <padding>
+            <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+         </padding>
+      </HBox>
+   </bottom>
+   <center>
+      <Canvas fx:id="canvas" height="900.0" width="1600.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>
